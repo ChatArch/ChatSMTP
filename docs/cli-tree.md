@@ -1,24 +1,19 @@
-# CLI 能力地图
+# CLI 树
 
-这个页面是 `ChatSMTP` 的 CLI 能力地图。生成后请按真实命令树更新；不要把未实现命令写成已可用操作。
+`chatsmtp --tree` 从真实注册的 Click command surface 生成。当前 `ChatSMTP` 只有根级包信息入口，没有业务子命令；模板 `hello` 命令不属于公开接口。
 
-## 当前命令树
+## 顶层命令
 
 ```text
-chatsmtp
-└── --help
+chatsmtp  # ChatArch SMTP tooling package
+├── --help  # show command help
+├── --version  # show the installed package version
+└── --tree  # show this CLI tree
 ```
 
-## 状态约定
+## 状态契约
 
-| 状态 | 含义 |
-| --- | --- |
-| 已实现 | 命令、函数和测试已经存在 |
-| 已验证 | 已通过 CI、本地 smoke 或真实服务实践 |
-| 未实现 | 只保留规划；实现前不要写操作教程 |
-
-## 更新清单
-
-- 新增 CLI 命令时，同步写背后的 Python API。
-- 新增 mutation 命令时，说明 dry-run / `--apply` / 权限边界。
-- 新增真实实践后，把验证结果写到对应 Flow 或实践页。
+- `chatsmtp --help` 必须暴露 `--tree`。
+- `chatsmtp --tree` 必须 exit 0，并只列出真实注册的命令/选项。
+- `chatsmtp hello` 必须失败；`hello` 不是业务命令。
+- 新增 SMTP 能力时，先增加可复用 Python API，再新增 CLI command，并同步本页。

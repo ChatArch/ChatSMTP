@@ -1,22 +1,22 @@
-# 开发计划
+# 能力边界
 
-这个页面记录 `ChatSMTP` 的文档化路线。模板只提供结构；请按真实实现和验证进展更新。
+`ChatSMTP` 当前是 SMTP tooling 的轻量包入口。正式命令只包含根级帮助、版本和真实 CLI 树。
 
-## Review Contract
-
-- CLI 命令必须调用可 import 的 Python API。
-- 文档先写已实现和已验证能力；未实现能力必须标记为未实现。
-- 敏感信息不得进入 README、docs、issue、PR 评论或 CI log。
-- 破坏性操作默认 dry-run，或要求显式 `--apply`。
-
-## Phase 1：当前已实现能力
+## 当前能力
 
 ```text
-待项目实现后补充。
+chatsmtp --version  # 输出安装版本
+chatsmtp --tree     # 输出真实 Click command surface
 ```
 
-## Phase 2：下一步计划
+## 未在当前版本实现
 
-```text
-待项目确认后补充。
-```
+- SMTP 连接配置。
+- 邮件发送、草稿、附件或模板处理。
+- 凭据写入、登录或 profile mutation。
+
+## 扩展契约
+
+- 新增实质 CLI 命令前，先实现可 import 的 Python API。
+- 涉及 SMTP 凭据时必须使用 ChatEnv/ChatStyle 的敏感字段和遮蔽规则。
+- 任何发送邮件或修改远端状态的命令都需要 dry-run / `--apply` 或明确确认边界。

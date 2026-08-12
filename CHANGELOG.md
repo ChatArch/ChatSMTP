@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 - 2026-08-12
+
+### Changed
+
+- Added generated root-only `chatsmtp --tree` from the Click command surface.
+- Updated README and MkDocs CLI tree pages to match the real command surface.
+- Hardened CI, Preview Docs, Deploy Docs, and Publish Package workflow contracts.
+- Removed the unused direct ChatStyle runtime dependency while preserving the ChatEnv provider entry point.
+
 ## 0.1.0 - 2026-07-27
 
 ### Added

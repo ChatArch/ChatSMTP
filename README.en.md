@@ -22,16 +22,27 @@ ChatArch SMTP tooling package.
 ## Quick Start
 
 ```bash
-pip install -e ".[dev]"
+pip install -e ".[dev,docs]"
 chatsmtp --help
 chatsmtp --version
+chatsmtp --tree
 python -m pytest -q
+mkdocs build --strict
 python -m build
+```
+
+## CLI Tree
+
+```text
+chatsmtp  # ChatArch SMTP tooling package
+├── --help  # show command help
+├── --version  # show the installed package version
+└── --tree  # show this CLI tree
 ```
 
 ## CLI Contract
 
-This template depends on `chatstyle>=0.1.0,<0.2.0` and `chatenv>=0.2.0,<0.3.0`. New commands should prefer:
+This template depends on `chatenv>=0.2.0,<0.3.0`; add a direct `chatstyle` dependency only when a real interactive command needs it. New SMTP capabilities should expose reusable Python APIs before CLI wiring, docs, and tests.
 
 - `CommandSchema` / `CommandField` for inputs.
 - `add_interactive_option()` for the shared `-i/-I` switch.

@@ -22,16 +22,27 @@ ChatArch SMTP tooling package.
 ## 快速开始
 
 ```bash
-pip install -e ".[dev]"
+pip install -e ".[dev,docs]"
 chatsmtp --help
 chatsmtp --version
+chatsmtp --tree
 python -m pytest -q
+mkdocs build --strict
 python -m build
+```
+
+## CLI 树
+
+```text
+chatsmtp  # ChatArch SMTP tooling package
+├── --help  # show command help
+├── --version  # show the installed package version
+└── --tree  # show this CLI tree
 ```
 
 ## CLI 规范
 
-这个模板默认依赖 `chatstyle>=0.1.0,<0.2.0` 和 `chatenv>=0.2.0,<0.3.0`，新的命令应优先使用：
+这个模板默认依赖 `chatenv>=0.2.0,<0.3.0`，只有在新增真实交互式命令时才应加入直接 `chatstyle` 依赖。新的 SMTP 能力应优先提供可复用 Python API，再接入 CLI、文档和测试。
 
 - `CommandSchema` / `CommandField` 描述输入。
 - `add_interactive_option()` 提供统一 `-i/-I`。
