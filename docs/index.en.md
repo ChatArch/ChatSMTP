@@ -1,26 +1,42 @@
 # ChatSMTP Docs
 
-ChatSMTP is a ChatArch Python package. This documentation site should hold long-lived usage notes, CLI/API entry points, capability maps, and roadmap notes. After scaffolding, replace placeholders with behavior that is actually implemented, explored, or planned for this package.
+`ChatSMTP` is the ChatArch Python CLI package shell for SMTP tooling. The public CLI currently exposes package metadata and the real command tree only; future SMTP capabilities should start with reusable Python APIs before extending CLI commands, docs, and tests.
 
-## Choose By Scenario
+<div class="grid cards" markdown>
 
-| Scenario | Document |
-| --- | --- |
-| Install the package, run the CLI, and confirm it works | [CLI Capability Map](cli-tree.md) |
-| Call package behavior directly from Python | [Python Interface Tree](interface-tree.md) |
-| Record implemented, verified, and planned capability boundaries | [Development Plan](development-plan.md) |
+-   :material-console-line: **CLI Tree**
 
-## Documentation Status
+    ---
 
-- **Implemented**: code, tests, or CLI routes exist.
-- **Verified**: covered by local smoke, CI, or real-service practice.
-- **Not implemented**: keep as roadmap and safety notes only; turn into operation docs after implementation and validation.
+    Inspect the current real command surface: [`chatsmtp --tree`](cli-tree.md).
 
-## Local Preview
+-   :material-email-fast: **SMTP Boundary**
+
+    ---
+
+    The current version is a lightweight entrypoint and does not send mail, store credentials, or connect to SMTP services.
+
+-   :material-shield-check: **Verification Contract**
+
+    ---
+
+    `--tree`, README, MkDocs, and tests must stay synchronized.
+
+</div>
+
+## Quick Start
 
 ```bash
-python -m pip install -e ".[docs]"
-mkdocs serve
+pip install ChatSMTP
+chatsmtp --version
+chatsmtp --tree
 ```
 
-The Chinese home page is available at <https://arch.gh.wzhecnu.cn/ChatSMTP/>. Topic pages without English translations fall back to the default Chinese content through the i18n plugin.
+## Development Verification
+
+```bash
+pip install -e ".[dev,docs]"
+python -m pytest -q
+mkdocs build --strict
+python -m build
+```

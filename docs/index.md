@@ -1,28 +1,42 @@
 # ChatSMTP 文档
 
-ChatSMTP 是 ChatArch 系列 Python 包。这个文档站提供长期维护的使用说明、CLI/API 入口、能力地图和路线图。生成模板后，请把占位说明替换为当前包已经实现、探索过或计划中的真实内容。
+`ChatSMTP` 是 ChatArch SMTP tooling 方向的 Python CLI 包壳。当前公开 CLI 只提供包信息与真实命令树；后续新增 SMTP 能力时，应先落到可复用 Python API，再扩展 CLI、文档和测试。
 
-站点入口：<https://arch.gh.wzhecnu.cn/ChatSMTP/>
+<div class="grid cards" markdown>
 
-## 按场景选择文档
+-   :material-console-line: **CLI 树**
 
-| 场景 | 文档 |
-| --- | --- |
-| 第一次安装、运行 CLI、确认包可用 | [CLI 能力地图](cli-tree.md) |
-| 从 Python 代码调用包能力 | [Python 接口树](interface-tree.md) |
-| 记录已实现、已验证、未实现能力边界 | [开发计划](development-plan.md) |
+    ---
 
-## 文档状态约定
+    查看当前真实命令面：[`chatsmtp --tree`](cli-tree.md)。
 
-- **已实现**：代码、测试或 CLI 路径已经存在。
-- **已验证**：已经通过本地 smoke、CI 或真实服务实践验证。
-- **未实现**：只写规划和安全边界，不写成可执行教程；实现并验证后再升级为操作文档。
+-   :material-email-fast: **SMTP 边界**
 
-## 本地预览
+    ---
+
+    当前版本是轻量入口，不发送邮件、不保存凭据、不连接 SMTP 服务。
+
+-   :material-shield-check: **验证契约**
+
+    ---
+
+    `--tree`、README、MkDocs 和测试必须同步更新。
+
+</div>
+
+## 快速开始
 
 ```bash
-python -m pip install -e ".[docs]"
-mkdocs serve
+pip install ChatSMTP
+chatsmtp --version
+chatsmtp --tree
 ```
 
-英文首页见站点语言入口：<https://arch.gh.wzhecnu.cn/ChatSMTP/en/>。缺少英文翻译的专题页会按 i18n fallback 回退到中文页面。
+## 开发验证
+
+```bash
+pip install -e ".[dev,docs]"
+python -m pytest -q
+mkdocs build --strict
+python -m build
+```
