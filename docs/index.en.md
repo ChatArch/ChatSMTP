@@ -8,7 +8,7 @@
 
     ---
 
-    Inspect the current real command surface: [`chatsmtp --tree`](cli-tree.md).
+    Inspect the current real command surface: [`chatsmtp --tree`](cli-tree.md) / `chatsmtp --tree-brief`.
 
 -   :material-email-fast: **SMTP Boundary**
 
@@ -20,7 +20,7 @@
 
     ---
 
-    `--tree`, README, MkDocs, and tests must stay synchronized.
+    `--tree`, `--tree-brief`, README, MkDocs, and tests must stay synchronized.
 
 </div>
 
@@ -30,6 +30,7 @@
 pip install ChatSMTP
 chatsmtp --version
 chatsmtp --tree
+chatsmtp --tree-brief
 ```
 
 ## Development Verification

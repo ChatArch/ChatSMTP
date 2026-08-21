@@ -8,7 +8,7 @@
 
     ---
 
-    查看当前真实命令面：[`chatsmtp --tree`](cli-tree.md)。
+    查看当前真实命令面：[`chatsmtp --tree`](cli-tree.md) / `chatsmtp --tree-brief`。
 
 -   :material-email-fast: **SMTP 边界**
 
@@ -20,7 +20,7 @@
 
     ---
 
-    `--tree`、README、MkDocs 和测试必须同步更新。
+    `--tree`、`--tree-brief`、README、MkDocs 和测试必须同步更新。
 
 </div>
 
@@ -30,6 +30,7 @@
 pip install ChatSMTP
 chatsmtp --version
 chatsmtp --tree
+chatsmtp --tree-brief
 ```
 
 ## 开发验证

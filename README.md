@@ -26,6 +26,7 @@ pip install -e ".[dev,docs]"
 chatsmtp --help
 chatsmtp --version
 chatsmtp --tree
+chatsmtp --tree-brief
 python -m pytest -q
 mkdocs build --strict
 python -m build
@@ -33,16 +34,19 @@ python -m build
 
 ## CLI 树
 
+ChatSMTP 使用共享的 `chatstyle.add_tree_option()` 从真实注册的 Click command surface 生成完整和简洁命令树。当前 CLI 是 root-only，因此两个视图的节点相同。
+
 ```text
-chatsmtp  # ChatArch SMTP tooling package
-├── --help  # show command help
-├── --version  # show the installed package version
-└── --tree  # show this CLI tree
+chatsmtp
+├── --help  # Show this message and exit.
+├── --version  # Show the version and exit.
+├── --tree  # Print the registered CLI tree and exit.
+└── --tree-brief  # Print the registered CLI tree without parameter signatures and exit.
 ```
 
 ## CLI 规范
 
-这个模板默认依赖 `chatenv>=0.2.0,<0.3.0`，只有在新增真实交互式命令时才应加入直接 `chatstyle` 依赖。新的 SMTP 能力应优先提供可复用 Python API，再接入 CLI、文档和测试。
+ChatSMTP 固定使用 `chatstyle>=0.2.0,<0.3.0` 提供 `--tree` / `--tree-brief`，并使用 `chatenv>=0.2.10,<0.3.0`、typed provider registration 和 ChatEnv 管理的 profile/storage 路径。新的 SMTP 能力应优先提供可复用 Python API，再接入 CLI、文档和测试。
 
 - `CommandSchema` / `CommandField` 描述输入。
 - `add_interactive_option()` 提供统一 `-i/-I`。

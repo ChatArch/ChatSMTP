@@ -26,6 +26,7 @@ pip install -e ".[dev,docs]"
 chatsmtp --help
 chatsmtp --version
 chatsmtp --tree
+chatsmtp --tree-brief
 python -m pytest -q
 mkdocs build --strict
 python -m build
@@ -33,16 +34,19 @@ python -m build
 
 ## CLI Tree
 
+ChatSMTP uses the shared `chatstyle.add_tree_option()` runtime to render full and brief trees from the registered Click command surface. The current CLI is root-only, so both views contain the same nodes.
+
 ```text
-chatsmtp  # ChatArch SMTP tooling package
-├── --help  # show command help
-├── --version  # show the installed package version
-└── --tree  # show this CLI tree
+chatsmtp
+├── --help  # Show this message and exit.
+├── --version  # Show the version and exit.
+├── --tree  # Print the registered CLI tree and exit.
+└── --tree-brief  # Print the registered CLI tree without parameter signatures and exit.
 ```
 
 ## CLI Contract
 
-This template depends on `chatenv>=0.2.0,<0.3.0`; add a direct `chatstyle` dependency only when a real interactive command needs it. New SMTP capabilities should expose reusable Python APIs before CLI wiring, docs, and tests.
+ChatSMTP uses `chatstyle>=0.2.0,<0.3.0` for `--tree` / `--tree-brief`, plus `chatenv>=0.2.10,<0.3.0`, typed provider registration, and ChatEnv-managed profile/storage paths. New SMTP capabilities should expose reusable Python APIs before CLI wiring, docs, and tests.
 
 - `CommandSchema` / `CommandField` for inputs.
 - `add_interactive_option()` for the shared `-i/-I` switch.
