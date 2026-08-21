@@ -4,7 +4,7 @@ from chatenv import BaseEnvConfig, EnvField
 
 
 class ChatsmtpConfig(BaseEnvConfig):
-    "ChatSMTP ChatEnv configuration."
+    """ChatSMTP configuration stored in ChatEnv's typed profile paths."""
 
     _title = "ChatSMTP Configuration"
     _aliases = ["chatsmtp"]
